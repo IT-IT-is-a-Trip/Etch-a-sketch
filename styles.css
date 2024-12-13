@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.row {
+    height: 27px;
+    /* border: 1px solid black; */
+}
+.cell {
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    display: inline-block;
+}
