@@ -1,15 +1,42 @@
-.container {
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 100px;
+}
+#resizeBtn {
+    margin: 25px;
+    font-size: 35px;
+    border-radius: 10px;
+    border: 1px solid rgba(78, 1, 67, 0.793);
+    background-color: rgba(229, 76, 206, 0.769);
+    color: rgb(73, 17, 79);
+}
+#container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 650px;
+    width: 650px;
+    flex-wrap: wrap;
+    border: 2px solid rgba(68, 14, 14, 0.679);
 }
 .row {
-    height: 27px;
+    justify-content: center;
+    display: flex;
+    width: 650px;
+    flex-wrap: wrap;
+    flex-grow: 1;
     /* border: 1px solid black; */
 }
 .cell {
-    width: 25px;
-    height: 25px;
-    border: 1px solid black;
-    display: inline-block;
+    flex-grow: 1;
+    border: 0.1px solid rgba(141, 141, 141, 0.117);
+    /* display: inline-block; */
+}
+.cell:hover {
+    background: rgb(212, 0, 255);
+}
+.cellHover {
+
 }
