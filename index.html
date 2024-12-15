@@ -3,24 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch-A-Sketch</title>
+    <link rel="icon" href="logo.png">
     <script src="js.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="clear">Clear</button>
-    <button id="resizeBtn">Resize grid</button>
-    <div id="container">
-        
-    </div>
-    <div id="colorPanel">
-        <div>COLOR</div>
-        <div id="colorButtons">
-            <button id="rainbow">Random color</button>
-            <button id="black">Black</button>
-            <button id="pink">Pink</button>
-            <button id="progressiveDark">Darkering</button>
+    <div id="center">
+        <div id="clearAndSize">
+            <button id="clear">CLEAR GRID</button>
+            <div id="eas">Etch-A-Sketch</div>
+            <button id="resizeBtn">GRID SIZE</button>
         </div>
+        <div id="modeAndGrid">
+            <div id="modeBtns">
+                <button id="rainbow">RANDOM</button>
+                <button id="normMode">NORMAL</button>
+                <button id="progressiveDark">SMOOTH</button>
+                <button id="erase">ERASE</button>
+            </div>
+                <div id="container">
+                </div>
+            <div id="rightPanel"></div>
+        </div>
+            
+            <div id="colorPanel">
+                <div id="colorButtons">
+                    <button id="black"></button>
+                    <button id="red"></button>
+                    <button id="pink"></button>
+                    <button id="violet"></button>
+                    <button id="blue"></button>
+                    <button id="darkblue"></button>
+                        <button id="orange"></button>
+                        <button id="yellow"></button>
+                        <button id="lime"></button>
+                        <button id="green"></button>
+                </div>
+            </div>
     </div>
 </body>
 </html>

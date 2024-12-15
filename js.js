@@ -1,7 +1,7 @@
 const resizeBtn = document.getElementById('resizeBtn');
 
-// .row - класс ряда
-// .cell - класс каждой клетки
+// .row
+// .cell
 function resizeGrid(px) {
     
 for (let i = 0; i<px; i++) {
@@ -55,19 +55,24 @@ container.addEventListener('pointerdown', e => {
 });
 
 let color = "";
+let mode = "";
 function fillCell(e) {
     if (e.target.className === "cell") {
-        if (color !== 'rainbow' && color !== 'darkering') {
+        if (mode !== 'rainbow' && mode !== 'darkering' && mode !== 'erase') {
             e.target.style.background = color;
-        } else if (color == "darkering") {
-            e.target.style.background = 'black';
+        } else if (mode == "darkering") {
+            e.target.style.background = color;
             e.target.style.opacity = darkeringMode();
+        } else if (mode == 'erase') {
+            e.target.style.background = 'white';
         }
         else {e.target.style.background = getRandomColor()}
         }
 }
 
-
+//erase mode
+const erase = document.getElementById('erase');
+erase.addEventListener('click', () => mode = 'erase')
 //rainbow mode
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
@@ -77,11 +82,12 @@ function getRandomColor() {
     }
     return rcolor;
 }
-let opacity = 0;
+
+
 let opa = 0;
 
 const darkMode = document.getElementById('progressiveDark');
-darkMode.addEventListener('click', () => color = 'darkering');
+darkMode.addEventListener('click', () => mode = 'darkering');
 function darkeringMode() {
     for (i = 0; i<10; i++) {
         if (opa <= 1) {
@@ -97,14 +103,80 @@ function darkeringMode() {
     const rainbow = document.getElementById('rainbow');
     const black = document.getElementById('black');
     const pink = document.getElementById('pink');
+    const yellow = document.getElementById('yellow');
+    const green = document.getElementById('green');
+    const red = document.getElementById('red');
+    const blue = document.getElementById('blue');
+    const violet = document.getElementById('violet');
+    const orange = document.getElementById('orange');
+    const lime = document.getElementById('lime');
+    const darkblue = document.getElementById('darkblue');
+
     rainbow.addEventListener('click', () => {
-        color = 'rainbow';
-        rainbow.style.background = color;
+        mode = 'rainbow';
     });
     black.addEventListener('click', () => {
         color = 'black';
+        if (mode !== 'darkering') {
+            mode = '';
+        } 
     });
     pink.addEventListener('click', () => {
         color = 'pink';
+        if (mode !== 'darkering') {
+            mode = '';
+        } 
     })
+    yellow.addEventListener('click', () => {
+        color = 'yellow';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    green.addEventListener('click', () => {
+        color = 'green';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    red.addEventListener('click', () => {
+        color = 'red';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    blue.addEventListener('click', () => {
+        color = 'blue';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    violet.addEventListener('click', () => {
+        color = 'violet';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    orange.addEventListener('click', () => {
+        color = 'orange';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    lime.addEventListener('click', () => {
+        color = 'lime';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+    darkblue.addEventListener('click', () => {
+        color = 'darkblue';
+        if (mode !== 'darkering') {
+            mode = '';
+        }
+    })
+const normalMode = document.getElementById('normMode');
+normalMode.addEventListener('click', () => {
+    mode = '';
+})
 
