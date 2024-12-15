@@ -24,8 +24,11 @@ function createCell(parent) {
     cell.className = 'cell';
     parent.appendChild(cell);
 }
+
+
+let size = ''
 resizeBtn.addEventListener('click', () => {
-    const size = prompt('enter the grid size');
+    size = prompt('enter the grid size');
     clearGrid();
     resizeGrid(size);
 });
@@ -34,18 +37,72 @@ function clearGrid() {
     const container = document.getElementById('container');
     container.innerHTML = '';
 }
+    const clear = document.getElementById('clear');
+    clear.addEventListener('click', () => {
+        clearGrid();
+        resizeGrid(size);
+    });
+
+
 const container = document.getElementById('container');
 
 container.addEventListener('pointerdown', e => {
     fillCell(e);
-    container.addEventListener('pointermove', fillCell);
+    container.addEventListener('mouseover', fillCell);
     container.addEventListener('pointerup', () => {
-        container.removeEventListener('pointermove', fillCell)
-    }, {once: true})
+        container.removeEventListener('mouseover', fillCell)
+    })
 });
 
+//прикольное осветление получилось 1)
+let color = "";
 function fillCell(e) {
     if (e.target.className === "cell") {
-        e.target.style.background = "pink";
+        if (color !== 'rainbow' && color !== 'darkering') {
+        e.target.style.background = color;
+        } else if (color == 'darkering') {
+            e.target.style.background = black;
+            e.target.style.opacity = darkeringMode();
+        }
+        else {e.target.style.background = getRandomColor()}
         }
 }
+
+
+//rainbow mode
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let rcolor = '#';
+    for (let i = 0; i < 6; i++) {
+        rcolor += letters[Math.floor(Math.random() * 16)];
+    }
+    return rcolor;
+}
+
+//прикольное осветление получилось
+const darkMode = document.getElementById('progressiveDark');
+darkMode.addEventListener('click', () => color = 'darkering');
+function darkeringMode() {
+    let opacity = 0.1;
+    for (i = 1; i<10; i++) {
+        opacity += 0.1;
+        return opacity;
+    }
+}
+
+
+
+    const rainbow = document.getElementById('rainbow');
+    const black = document.getElementById('black');
+    const pink = document.getElementById('pink');
+    rainbow.addEventListener('click', () => {
+        color = 'rainbow';
+        rainbow.style.background = color;
+    });
+    black.addEventListener('click', () => {
+        color = 'black';
+    });
+    pink.addEventListener('click', () => {
+        color = 'pink';
+    })
+
