@@ -54,15 +54,11 @@ container.addEventListener('pointerdown', e => {
     })
 });
 
-//прикольное осветление получилось 1)
 let color = "";
 function fillCell(e) {
     if (e.target.className === "cell") {
         if (color !== 'rainbow' && color !== 'darkering') {
-        e.target.style.background = color;
-        } else if (color == 'darkering') {
-            e.target.style.background = black;
-            e.target.style.opacity = darkeringMode();
+            e.target.style.background = color;
         }
         else {e.target.style.background = getRandomColor()}
         }
