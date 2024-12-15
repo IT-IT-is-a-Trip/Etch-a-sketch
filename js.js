@@ -59,6 +59,9 @@ function fillCell(e) {
     if (e.target.className === "cell") {
         if (color !== 'rainbow' && color !== 'darkering') {
             e.target.style.background = color;
+        } else if (color == "darkering") {
+            e.target.style.background = 'black';
+            e.target.style.opacity = darkeringMode();
         }
         else {e.target.style.background = getRandomColor()}
         }
@@ -74,15 +77,18 @@ function getRandomColor() {
     }
     return rcolor;
 }
+let opacity = 0;
+let opa = 0;
 
-//прикольное осветление получилось
 const darkMode = document.getElementById('progressiveDark');
 darkMode.addEventListener('click', () => color = 'darkering');
 function darkeringMode() {
-    let opacity = 0.1;
-    for (i = 1; i<10; i++) {
-        opacity += 0.1;
-        return opacity;
+    for (i = 0; i<10; i++) {
+        if (opa <= 1) {
+            opa += 0.1;
+        } else {
+        opa = 0.1;}
+        return opa;
     }
 }
 
