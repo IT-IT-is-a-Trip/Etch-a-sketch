@@ -1,9 +1,16 @@
+* {
+    cursor: none;
+}
 body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px;
     background-color: #C05805;
+    cursor: none;
 }
 #center {
     display: flex;
@@ -48,7 +55,7 @@ body {
     color: white;
 }
 #resizeBtn {
-    box-shadow: 1px 1px 2px #DB9501;
+    box-shadow: 1.5px 1.5px 2px #b17a03;
     width: 250px;
     height: 42px;
     font-size: 30px;
@@ -56,6 +63,7 @@ body {
     background-color: #DB9501;
     border: 1px solid #8a5f01;
     color: white;
+    text-align: center;
 }
 #container {
     margin: 15px;
@@ -82,7 +90,8 @@ body {
     /* display: inline-block; */
 }
 .cell:hover {
-    background: rgb(212, 0, 255);
+    background: rgb(255, 174, 0);
+    opacity: 0.1;
 }
 
 #colorButtons {
@@ -176,4 +185,29 @@ body {
     font-weight: 100;
     color: rgba(240, 255, 255, 0.926);
     text-shadow: 2px 2px 4px #2E2300;
+}
+#plusSZ,
+#minusSZ {
+    width: 35px;
+    height: 35px;
+    color: white;
+    background-color: #462003;
+    box-shadow: 1.5px 1.5px 2px #2E2300;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+
+.cursor {
+    height: 13px;
+    width: 13px;     pointer-events: none;
+    position: absolute;
+    border: 2px solid rgb(255, 136, 0);
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: 0, 1s;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.362);
 }

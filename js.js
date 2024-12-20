@@ -1,5 +1,6 @@
 const resizeBtn = document.getElementById('resizeBtn');
 
+const body = document.querySelector('body');
 // .row
 // .cell
 function resizeGrid(px) {
@@ -26,12 +27,32 @@ function createCell(parent) {
 }
 
 
-let size = ''
-resizeBtn.addEventListener('click', () => {
-    size = prompt('enter the grid size');
+const plus = document.getElementById('plusSZ');
+const minus = document.getElementById("minusSZ");
+
+plus.addEventListener('click', () => {
+    if (size >= 4 && size <= 96) {
+        size += 4;
+        resizePattern();
+    };
+});
+minus.addEventListener('click', () => {
+    if (size !==4) {
+        size -= 4;
+        resizePattern();
+    };
+});
+
+let size = 16;
+resizeBtn.innerText = size + `x${size}`;
+resizeGrid(size);
+
+function resizePattern() {
+    resizeBtn.innerText = size + `x${size}`;
     clearGrid();
     resizeGrid(size);
-});
+}
+// resizeBtn.addEventListener('click', resizePattern);
 
 function clearGrid() {
     const container = document.getElementById('container');
@@ -45,28 +66,34 @@ function clearGrid() {
 
 
 const container = document.getElementById('container');
-
 container.addEventListener('pointerdown', e => {
     fillCell(e);
     container.addEventListener('mouseover', fillCell);
-    container.addEventListener('pointerup', () => {
+    body.addEventListener('mouseup', () => {
         container.removeEventListener('mouseover', fillCell)
     })
 });
 
-let color = "";
+let color = "black";
 let mode = "";
 function fillCell(e) {
     if (e.target.className === "cell") {
         if (mode !== 'rainbow' && mode !== 'darkering' && mode !== 'erase') {
             e.target.style.background = color;
+            e.target.style.opacity = 1;
+            cursor.style.backgroundColor = color;
         } else if (mode == "darkering") {
             e.target.style.background = color;
             e.target.style.opacity = darkeringMode();
         } else if (mode == 'erase') {
             e.target.style.background = 'white';
+            e.target.style.opacity = 1;
+            cursor.style.backgroundColor = 'white';
         }
-        else {e.target.style.background = getRandomColor()}
+        else {e.target.style.opacity = 1;
+            e.target.style.background = getRandomColor()
+            cursor.style.backgroundColor = getRandomColor();
+            cursor.style.border = getRandomColor();}
         }
 }
 
@@ -117,60 +144,70 @@ function darkeringMode() {
     });
     black.addEventListener('click', () => {
         color = 'black';
+        cursor.style.backgroundColor = 'black';
         if (mode !== 'darkering') {
             mode = '';
         } 
     });
     pink.addEventListener('click', () => {
         color = 'pink';
+        cursor.style.backgroundColor = 'pink';
         if (mode !== 'darkering') {
             mode = '';
         } 
     })
     yellow.addEventListener('click', () => {
         color = 'yellow';
+        cursor.style.backgroundColor = 'yellow';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     green.addEventListener('click', () => {
         color = 'green';
+        cursor.style.backgroundColor = 'green';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     red.addEventListener('click', () => {
         color = 'red';
+        cursor.style.backgroundColor = 'red';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     blue.addEventListener('click', () => {
         color = 'blue';
+        cursor.style.backgroundColor = 'blue';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     violet.addEventListener('click', () => {
         color = 'violet';
+        cursor.style.backgroundColor = 'violet';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     orange.addEventListener('click', () => {
         color = 'orange';
+        cursor.style.backgroundColor = 'orange';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     lime.addEventListener('click', () => {
         color = 'lime';
+        cursor.style.backgroundColor = 'lime';
         if (mode !== 'darkering') {
             mode = '';
         }
     })
     darkblue.addEventListener('click', () => {
         color = 'darkblue';
+        cursor.style.backgroundColor = '';
         if (mode !== 'darkering') {
             mode = '';
         }
@@ -179,4 +216,16 @@ const normalMode = document.getElementById('normMode');
 normalMode.addEventListener('click', () => {
     mode = '';
 })
+document.body.oncontextmenu = function () {
+        return false;
+}
+const cursor = document.querySelector(".cursor");
 
+const mouseMove = function (e) {
+let x = e.clientX;
+let y = e.clientY;
+cursor.style.left = x + "px";
+cursor.style.top = y + "px";
+};
+
+document.addEventListener("mousemove", mouseMove);   
